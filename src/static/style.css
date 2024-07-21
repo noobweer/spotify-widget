@@ -1,0 +1,79 @@
+* {
+    font-family: "Roboto", sans-serif;
+  }
+  
+  body {
+    overflow: hidden; 
+  }
+  
+  .container {
+    display: flex;
+    width: 500px;
+    height: 500px; 
+    justify-content: flex-start; 
+    background-color: black;
+    border-radius: 65px;
+    flex-direction: column;
+    align-items: left;
+    position: relative; /* Added for relative positioning */
+  }
+  
+  .cover-container {
+    margin-bottom: -25px;
+    position: relative; /* Added for relative positioning */
+  }
+  
+  .album-cover {
+    width: 275px;
+    height: 275px; 
+    border-radius: 35px; 
+    object-fit: cover;
+    margin: 45px;
+    opacity: 1;
+    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+    transform: translateY(0);
+  }
+  
+  .music-contents {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    margin: 0 45px;
+    position: relative;
+  }
+  
+  .song-name, .artist-names {
+    opacity: 1;
+    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+    transform: translateY(0);
+  }
+  
+  .song-name {
+    font-size: 45px;
+    font-weight: 700;
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    color: white;
+  }
+  
+  .artist-names {
+    font-size: 40px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #909090;
+    margin-top: 10px;
+  }
+  
+  .spotify-logo {
+    width: 75px;
+    height: 75px;
+    background: url('https://i.imgur.com/UdnmnfB.png') no-repeat center center;
+    background-size: contain;
+    image-rendering: smooth;
+    margin-left: 380px;
+    margin-top: -405px;
+  }
+  

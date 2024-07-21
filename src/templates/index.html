@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spotify Now Playing</title>
+  <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="cover-container">
+      <img id="album-cover" class="item album-cover" src="" alt="Album Cover">
+    </div>
+    <div class="music-contents">
+      <div id="song-name" class="song-name">Song Name</div>
+      <div id="artist-names" class="artist-names">Artist Names</div>
+    </div>
+    <div class="spotify-logo"></div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      let currentTrack = {};
+  
+      function fetchCurrentTrack() {
+        fetch('/song')
+          .then(response => response.json())
+          .then(data => {
+            const albumCover = document.getElementById('album-cover');
+            const songName = document.getElementById('song-name');
+            const artistNames = document.getElementById('artist-names');
+  
+            if (data.song_name !== currentTrack.song_name || data.artist_names !== currentTrack.artist_names || data.album_cover !== currentTrack.album_cover) {
+              currentTrack = data;
+
+              albumCover.style.opacity = 0;
+              albumCover.style.transform = 'translateY(20px)';
+              songName.style.opacity = 0;
+              songName.style.transform = 'translateY(20px)';
+              artistNames.style.opacity = 0;
+              artistNames.style.transform = 'translateY(20px)';
+  
+              setTimeout(() => {
+                if (data.album_cover) {
+                  albumCover.src = data.album_cover;
+                  albumCover.onload = function () {
+                    albumCover.style.opacity = 1;
+                    albumCover.style.transform = 'translateY(0)';
+                  };
+                } else {
+                  albumCover.src = '';
+                  albumCover.style.opacity = 1;
+                  albumCover.style.transform = 'translateY(0)';
+                }
+  
+                songName.textContent = data.song_name;
+                artistNames.textContent = data.artist_names;
+  
+                setTimeout(() => {
+                  songName.style.opacity = 1;
+                  songName.style.transform = 'translateY(0)';
+                  artistNames.style.opacity = 1;
+                  artistNames.style.transform = 'translateY(0)';
+                }, 500); 
+              }, 500); 
+            }
+          })
+          .catch(error => console.error('Error fetching current track:', error));
+      }
+  
+      fetchCurrentTrack();
+  
+      // Fetch current track every 3 seconds
+      setInterval(fetchCurrentTrack, 3000);
+    });
+  </script>
+</body>
+</html>
