@@ -1,4 +1,4 @@
-<img src="preveiw.gif" width="500" height="500" />
+<img src="preveiw.gif" width="250" height="250" />
 
 ## How to use
 
