@@ -1,3 +1,4 @@
+![Preveiw of widget](preveiw.gif)
 ## How to use
 
 Create a browser source and input these values
