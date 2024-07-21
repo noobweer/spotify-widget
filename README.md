@@ -1,4 +1,5 @@
-![Preveiw of widget](preveiw.gif)
+<img src="preveiw.gif" width="1000" height="1000" />
+
 ## How to use
 
 Create a browser source and input these values
